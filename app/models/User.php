@@ -5,19 +5,25 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'users';
+	// Attributes
+
+	protected $table = 'subscribers';
+
+	protected $softDelete = true;
+
+	public $timestamps = true;
+
+	protected $fillable = array('firstname', 'lastname', 'email', 'password', 'personal_number', 'adress', 'zip_code', 'city', 'country');
+
+	protected $hidden = array('password', 'remember_token');
 
 	/**
-	 * The attributes excluded from the model's JSON form.
+	 * Always hash users password
 	 *
-	 * @var array
 	 */
-	protected $hidden = array('password');
+	public function setPasswordAttribute($pass){
+		$this->attributes['password'] = Hash::make($pass);
+	}
 
 	/**
 	 * Get the unique identifier for the user.
