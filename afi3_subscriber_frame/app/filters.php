@@ -14,6 +14,9 @@
 App::before(function($request)
 {
 	//
+	if ($request->is('api*')){
+		Config::set('auth.model', 'ApiUser');
+	}
 });
 
 
@@ -40,8 +43,8 @@ Route::filter('auth', function()
 
 
 Route::filter('auth.basic', function()
-{	
-	return Auth::onceBasic();
+{
+	return Auth::onceBasic('api_key');
 });
 
 /*
