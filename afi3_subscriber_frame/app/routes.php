@@ -31,6 +31,10 @@ Route::group(array('before' => 'auth'), function(){
 	//
 	Route::get('myprofile', array('uses' => 'SubscriberController@getProfile'));
 
+	// 
+	Route::get('myprofile/edit', array('uses' => 'SubscriberController@getEditProfile'));
+	Route::post('myprofile/edit', array('uses' => 'SubscriberController@postEditProfile'));
+
 });
 
 //

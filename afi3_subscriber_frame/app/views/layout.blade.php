@@ -12,18 +12,20 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- {{ HTML::style('css/base.css') }} -->
+	{{ HTML::style('http://fonts.googleapis.com/css?family=Oxygen:400,300,700') }}
+	{{ HTML::style('css/base.css') }}
 
 </head>
 <body>
 	<nav>
-		{{ HTML::link('', 'Home') }}
+		{{ HTML::link('', 'Hem') }}
 		@if(!Auth::check())
-			{{ HTML::link('registration', 'Register') }}
-			{{ HTML::link('login', 'Login') }}
+			{{ HTML::link('registration', 'Registrera') }}
+			{{ HTML::link('login', 'Logga in') }}
 		@else
-			{{ HTML::link('myprofile', 'My Profile') }}
-			{{ HTML::link('logout', 'Logout') }}
+			{{ HTML::link('myprofile', 'Min profil') }}
+			{{ HTML::link('myprofile/edit', 'Redigera min profil') }}
+			{{ HTML::link('logout', 'Logga ut') }}
 		@endif
 	</nav>
 	<div id="APP">
